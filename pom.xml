@@ -12,6 +12,7 @@
     <artifactId>oms-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>oms-backend</name>
+    <packaging>jar</packaging>
     <description>oms-backend</description>
     <properties>
         <java.version>17</java.version>
