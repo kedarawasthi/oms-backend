@@ -18,6 +18,13 @@ import java.util.logging.Logger;
 public class OrderController {
 
     Logger logger = Logger.getLogger(OrderController.class.getName());
+
+    @PostMapping("/health-check")
+    public ResponseEntity<String> healthCheck(@RequestHeader Map<String,String> headers) {
+        logger.info("oms-backend up and running "+ headers.get("x-correlation-id"));
+        return new ResponseEntity<>("oms-backend up and running " + headers.get("x-correlation-id"), HttpStatus.ACCEPTED);
+    }
+
     @PostMapping("/customer")
     public ResponseEntity<String> placeSalesOrder(@Valid @RequestBody Salesorder salesorder, @RequestHeader Map<String,String> headers) {
         logger.info("Receieved salesorder message, correlationId: "+ headers.get("x-correlation-id") + ", BusinessUnitName: "+ salesorder.businessUnitName);
